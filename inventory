@@ -1,0 +1,9 @@
+[k8s_masters]
+k8s0.lanegoolsby.com
+
+[k8s_workers]
+k8s1.lanegoolsby.com
+k8s2.lanegoolsby.com
+
+[traefik]
+traefik.lanegoolsby.com
