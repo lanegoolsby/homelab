@@ -1,0 +1,13 @@
+# ports:
+#   web:
+#     redirectTo: websecure
+#   websecure:
+#     tls:
+#       enabled: true
+
+# ingressClass:
+#   enabled: true
+#   isDefaultClass: true
+
+# service:
+#   type: LoadBalancer
