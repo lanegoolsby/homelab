@@ -1,0 +1,34 @@
+# apiVersion: traefik.io/v1alpha1
+# kind: IngressRoute
+# metadata:
+#   name: example-service
+#   namespace: traefik
+# spec:
+#   entryPoints:
+#   - websecure
+#   routes:
+#   - match: Host(`example.yourdomain.com`)
+#     kind: Rule
+#     services:
+#     - name: example-service
+#       namespace: default
+#       port: 80
+#   tls: {}
+# ---
+# # You can define multiple ingress routes in the same file
+# apiVersion: traefik.io/v1alpha1
+# kind: IngressRoute
+# metadata:
+#   name: another-example
+#   namespace: traefik
+# spec:
+#   entryPoints:
+#   - websecure
+#   routes:
+#   - match: Host(`another-example.yourdomain.com`)
+#     kind: Rule
+#     services:
+#     - name: another-service
+#       namespace: default
+#       port: 8080
+#   tls: {}
