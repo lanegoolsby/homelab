@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: git@github.com/lanegoolsby/homelab.git
+    repoURL: git@github.com:lanegoolsby/homelab.git
     targetRevision: init
     path: clusters/microk8s
   destination:
@@ -16,5 +16,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
-
 ---
+
