@@ -1,0 +1,29 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/YOUR_USERNAME/YOUR_REPO.git
+    targetRevision: HEAD
+    path: charts/nginx
+    helm:
+      values: |
+        replicaCount: 1
+        ingress:
+          enabled: true
+          hosts:
+            - host: nginx.local
+              paths:
+                - /
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
+---
