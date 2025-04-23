@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: git@github.com/lanegoolsby/homelab.git
+    repoURL: git@github.com:lanegoolsby/homelab.git
     targetRevision: init
     path: charts/nginx
     helm:
@@ -25,5 +25,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
-
 ---
+
