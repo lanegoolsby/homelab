@@ -6,8 +6,8 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/YOUR_USERNAME/YOUR_REPO.git
-    targetRevision: HEAD
+    repoURL: git@github.com/lanegoolsby/homelab.git
+    targetRevision: init
     path: charts/nginx
     helm:
       values: |

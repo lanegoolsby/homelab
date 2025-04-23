@@ -7,7 +7,7 @@ spec:
   project: default
   source:
     repoURL: git@github.com/lanegoolsby/homelab.git
-    targetRevision: HEAD
+    targetRevision: init
     path: clusters/microk8s
   destination:
     server: https://kubernetes.default.svc
