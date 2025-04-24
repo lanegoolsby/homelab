@@ -1,3 +1,1 @@
-# GitOps Repository
-
-GitOps deployment for MicroK8s with ArgoCD and Traefik.
+kubectl rollout restart deployment argocd-server argocd-repo-server argocd-applicationset-controller argocd-redis argocd-dex-server -n argocd
