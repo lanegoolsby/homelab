@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/lanegoolsby/homelab.git
+    repoURL: git@github.com:lanegoolsby/homelab.git
     targetRevision: init
     path: apps/metallb
   destination:
