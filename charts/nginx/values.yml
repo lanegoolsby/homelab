@@ -1,9 +1,0 @@
-replicaCount: 1
-ingress:
-  enabled: true
-  hosts:
-    - host: nginx.local
-      paths:
-        - /
-
----
