@@ -6,20 +6,16 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: git@github.com:lanegoolsby/homelab.git
-    targetRevision: init
-    path: apps/traefik
+    repoURL: https://helm.traefik.io/traefik
+    chart: traefik
+    targetRevision: 24.0.0 # Use the latest or desired version
     helm:
-      values: |
-        ingressClass:
-          enabled: true
-          isDefaultClass: true
-        service:
-          type: LoadBalancer
+      valueFiles:
+      - ../../../apps/traefik/helm-values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: traefik
   syncPolicy:
     automated:
-      selfHeal: true
       prune: true
+      selfHeal: true
