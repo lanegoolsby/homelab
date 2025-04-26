@@ -1,0 +1,4 @@
+resources:
+- argocd.yml
+- cilium.yaml
+- traefik-app.yaml
