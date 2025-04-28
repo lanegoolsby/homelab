@@ -1,0 +1,21 @@
+kubeProxyReplacement: strict
+
+ipam:
+  mode: kubernetes
+
+hubble:
+  enabled: true
+  relay:
+    enabled: true
+  ui:
+    enabled: true
+
+loadBalancer:
+  mode: snat # use DSR if your networking supports it
+
+operator:
+  replicas: 1
+
+# Optional but useful for homelab debugging:
+debug:
+  enabled: true
