@@ -9,9 +9,9 @@ spec:
     repoURL: https://helm.traefik.io/traefik
     chart: traefik
     targetRevision: 24.0.0 # Use the latest or desired version
-    helm:
-      valueFiles:
-      - ../helm-values.yaml
+    # helm:
+    #   valueFiles:
+    #   - ../helm-values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: traefik
