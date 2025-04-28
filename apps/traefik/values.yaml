@@ -28,6 +28,7 @@ traefik:
     # Dashboard
     dashboard:
       enabled: true
+      ingressRoute: true
 
     # Service configuration
     service:
