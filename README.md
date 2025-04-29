@@ -14,13 +14,4 @@ kubectl port-forward svc/traefik -n traefik 443:443
 
 !!!!!!!!!!!!!!!!!!!!!!!!
 
-Notes
-
-Network issues are preventing apps from standing up in Argo
-
-Trying to setup MetalLB to serve as a proxy. It won't deploy through Argo.
-
-
-----
-
-Every time I deploy to Git the Private SSH Key is wiped out and I have to recreate the connection in Argo
+This has the appearance of working
