@@ -8,10 +8,12 @@ spec:
   source:
     repoURL: https://helm.traefik.io/traefik
     chart: traefik
-    targetRevision: 24.0.0 # Use the latest or desired version
+    targetRevision: 24.0.0 
     helm:
       valueFiles:
       - values.yaml
+    repoURL: git@github.com:lanegoolsby/homelab.git
+    targetRevision: init
   destination:
     server: https://kubernetes.default.svc
     namespace: traefik
@@ -23,21 +25,21 @@ spec:
     - CreateNamespace=true
 ---
 
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: traefik-routes
-  namespace: argocd
-spec:
-  project: default
-  source:
-    repoURL: git@github.com:lanegoolsby/homelab.git
-    targetRevision: init
-    path: apps/traefik
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: traefik
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: traefik-routes
+#   namespace: argocd
+# spec:
+#   project: default
+#   source:
+#     repoURL: git@github.com:lanegoolsby/homelab.git
+#     targetRevision: init
+#     path: apps/traefik
+#   destination:
+#     server: https://kubernetes.default.svc
+#     namespace: traefik
+#   syncPolicy:
+#     automated:
+#       prune: true
+#       selfHeal: true
