@@ -1,3 +1,4 @@
+* Create the SSH secret?
 * kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 * kubectl apply -f clusters/microk8s/argocd.yaml
 * kubectl port-forward svc/argocd-server -n argocd 8080:443
