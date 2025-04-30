@@ -7,7 +7,7 @@ spec:
   entryPoints:
   - websecure
   routes:
-  - match: Host(`argo.lanegoolsby.com` || `192.168.100.50)
+  - match: Host(`argocd.home.lanegoolsby.com`)
     kind: Rule
     services:
     - name: argo-server
