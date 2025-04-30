@@ -1,33 +1,33 @@
-apiVersion: traefik.io/v1alpha1
-kind: IngressRoute
-metadata:
-  name: plex
-  namespace: traefik
-spec:
-  entryPoints:
-  - websecure
-  routes:
-  - match: Host(`plex.yourdomain.com`)
-    kind: Rule
-    services:
-    - name: plex
-      namespace: media
-      port: 32400
-  tls: {}
----
-apiVersion: traefik.io/v1alpha1
-kind: IngressRoute
-metadata:
-  name: jellyfin
-  namespace: traefik
-spec:
-  entryPoints:
-  - websecure
-  routes:
-  - match: Host(`jellyfin.yourdomain.com`)
-    kind: Rule
-    services:
-    - name: jellyfin
-      namespace: media
-      port: 8096
-  tls: {}
+# apiVersion: traefik.io/v1alpha1
+# kind: IngressRoute
+# metadata:
+#   name: plex
+#   namespace: traefik
+# spec:
+#   entryPoints:
+#   - websecure
+#   routes:
+#   - match: Host(`plex.yourdomain.com`)
+#     kind: Rule
+#     services:
+#     - name: plex
+#       namespace: media
+#       port: 32400
+#   tls: {}
+# ---
+# apiVersion: traefik.io/v1alpha1
+# kind: IngressRoute
+# metadata:
+#   name: jellyfin
+#   namespace: traefik
+# spec:
+#   entryPoints:
+#   - websecure
+#   routes:
+#   - match: Host(`jellyfin.yourdomain.com`)
+#     kind: Rule
+#     services:
+#     - name: jellyfin
+#       namespace: media
+#       port: 8096
+#   tls: {}
