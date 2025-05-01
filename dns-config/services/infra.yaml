@@ -12,5 +12,23 @@ spec:
     services:
     - name: argo-server
       namespace: argocd
-      port: 32400
+      port: 443
+  tls: {}
+---
+
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: traefik-ingress
+  namespace: traefik
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`traefik.home.lanegoolsby.com`)
+    kind: Rule
+    services:
+    - name: traefik
+      namespace: traefik
+      port: 443
   tls: {}

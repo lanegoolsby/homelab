@@ -24,21 +24,3 @@ spec:
 ---
 
 
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: traefik-routes
-#   namespace: argocd
-# spec:
-#   project: default
-#   source:
-#     repoURL: git@github.com:lanegoolsby/homelab.git
-#     targetRevision: init
-#     path: apps/traefik
-#   destination:
-#     server: https://kubernetes.default.svc
-#     namespace: traefik
-#   syncPolicy:
-#     automated:
-#       prune: true
-#       selfHeal: true
