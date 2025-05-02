@@ -24,12 +24,12 @@ metadata:
   namespace: traefik
 spec:
   entryPoints:
-  - websecure
+  - web
   routes:
   - match: Host(`traefik.home.lanegoolsby.com`)
     kind: Rule
     services:
     - name: traefik
       namespace: traefik
-      port: 443
+      port: 80
   tls: {}
