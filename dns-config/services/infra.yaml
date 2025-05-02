@@ -33,6 +33,7 @@ spec:
     - name: argocd-server
       namespace: argocd
       port: 443
+      kind: Service
   tls: {}
 ---
 
