@@ -30,7 +30,7 @@ spec:
   - match: Host(`traefik.home.lanegoolsby.com`)
     kind: Rule
     services:
-    - name: argocd-server
+    - name: svc/argocd-server
       namespace: argocd
       port: 443
   tls: {}
@@ -50,5 +50,5 @@ spec:
     services:
     - name: traefik
       namespace: traefik
-      port: 9000
+      port: 443
   tls: {}
