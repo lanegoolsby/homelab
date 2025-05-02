@@ -29,6 +29,7 @@ traefik:
     dashboard:
       enabled: true
       ingressRoute: true
+      domain: "traefik.home.lanegoolsby.com"
 
     # Service configuration
     service:
