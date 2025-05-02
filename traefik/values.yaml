@@ -17,7 +17,7 @@ traefik:
       web:
         port: 80
         exposedPort: 80
-        expose: false
+        expose: true # Changed to true to expose HTTP port
         protocol: TCP
       websecure:
         port: 443
@@ -42,8 +42,13 @@ traefik:
       size: 128Mi
       path: /data
 
+    # TLS configuration to fix certificate validation error
+    ssl:
+      insecureSkipVerify: true # Skip certificate validation for backend services
+
     # Add your custom configuration here
     additionalArguments:
     - "--api.dashboard=true"
     - "--providers.kubernetesingress.ingressclass=traefik"
     - "--log.level=INFO"
+    - "--serversTransport.insecureSkipVerify=true" # Skip certificate validation
