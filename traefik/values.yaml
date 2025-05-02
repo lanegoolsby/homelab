@@ -28,8 +28,16 @@ traefik:
     # Dashboard
     dashboard:
       enabled: true
-      ingressRoute: true
-      domain: "traefik.home.lanegoolsby.com"
+
+    # Explicitly create IngressRoute for the dashboard
+    ingressRoute:
+      dashboard:
+        enabled: true
+        annotations: {}
+        labels: {}
+        entryPoints: [ "web", "websecure" ]
+        middlewares: []
+        tls: {}
 
     # Service configuration
     service:
@@ -52,4 +60,8 @@ traefik:
     - "--api.insecure=true" # Enable insecure API for dashboard access
     - "--providers.kubernetesingress.ingressclass=traefik"
     - "--log.level=INFO"
-    - "--serversTransport.insecureSkipVerify=true" # Skip certificate validation
+    - "--serversTransport.insecureSkipVerify=true"
+    # Define hosts for the dashboard
+    deployment:
+      additionalContainerArgs:
+      - "--providers.kubernetesIngress.ingressEndpoint.publishedService=traefik/traefik"
