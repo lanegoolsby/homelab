@@ -28,16 +28,8 @@ traefik:
     # Dashboard
     dashboard:
       enabled: true
-
-    # Explicitly create IngressRoute for the dashboard
-    ingressRoute:
-      dashboard:
-        enabled: true
-        annotations: {}
-        labels: {}
-        entryPoints: [ "web", "websecure" ]
-        middlewares: []
-        tls: {}
+      ingressRoute: true
+      domain: "traefik.home.lanegoolsby.com"
 
     # Service configuration
     service:
