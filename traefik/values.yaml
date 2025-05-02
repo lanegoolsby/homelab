@@ -52,8 +52,4 @@ traefik:
     - "--api.insecure=true" # Enable insecure API for dashboard access
     - "--providers.kubernetesingress.ingressclass=traefik"
     - "--log.level=INFO"
-    - "--serversTransport.insecureSkipVerify=true"
-    # Define hosts for the dashboard
-    deployment:
-      additionalContainerArgs:
-      - "--providers.kubernetesIngress.ingressEndpoint.publishedService=traefik/traefik"
+    - "--serversTransport.insecureSkipVerify=true" # Skip certificate validation
