@@ -15,7 +15,7 @@ traefik:
     # RBAC configuration - use custom RBAC
     rbac:
       enabled: false
-    
+
     # Ports configuration
     ports:
       web:
