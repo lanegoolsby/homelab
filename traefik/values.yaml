@@ -12,6 +12,10 @@ traefik:
       enabled: true
       isDefaultClass: true
 
+    # RBAC configuration - use custom RBAC
+    rbac:
+      enabled: false
+    
     # Ports configuration
     ports:
       web:
@@ -61,6 +65,7 @@ traefik:
     - "--providers.kubernetesingress.ingressclass=traefik"
     - "--log.level=INFO"
     - "--serversTransport.insecureSkipVerify=true"
+    - "--providers.kubernetescrd.allowCrossNamespace=true"
     # Define hosts for the dashboard
     deployment:
       additionalContainerArgs:
