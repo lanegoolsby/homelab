@@ -30,26 +30,6 @@ spec:
   - match: Host(`traefik.home.lanegoolsby.com`)
     kind: Rule
     services:
-    - name: svc/argocd-server
-      namespace: argocd
-      port: 443
-      kind: Service
-  tls: {}
----
-
-apiVersion: traefik.io/v1alpha1
-kind: IngressRoute
-metadata:
-  name: traefik-dashboard-ingress
-  namespace: traefik
-spec:
-  entryPoints:
-  - web
-  - websecure
-  routes:
-  - match: Host(`traefik.home.lanegoolsby.com`)
-    kind: Rule
-    services:
     - name: api@internal
       kind: TraefikService
   tls: {}
