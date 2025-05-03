@@ -12,10 +12,6 @@ traefik:
       enabled: true
       isDefaultClass: true
 
-    # RBAC configuration - use custom RBAC
-    rbac:
-      enabled: false
-
     # Ports configuration
     ports:
       web:

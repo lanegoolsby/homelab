@@ -15,4 +15,6 @@ kubectl port-forward svc/traefik -n traefik 443:443
 
 !!!!!!!!!!!!!!!!!!!!!!!!
 
-This has the appearance of working
+Need to get ingress working for hello world. 
+
+Switch over to public repo URL instead of SSH. 
