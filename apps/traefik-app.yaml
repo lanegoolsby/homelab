@@ -12,7 +12,7 @@ spec:
     helm:
       valueFiles:
       - $repo/traefik/values.yaml
-  - repoURL: git@github.com:lanegoolsby/homelab.git
+  - repoURL: https://github.com/lanegoolsby/homelab.git
     targetRevision: init
     ref: repo
   destination:
@@ -33,7 +33,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: git@github.com:lanegoolsby/homelab.git
+    repoURL: https://github.com/lanegoolsby/homelab.git
     targetRevision: init
     path: traefik
     directory:
