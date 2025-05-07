@@ -37,11 +37,11 @@ traefik:
         annotations: {}
         labels: {}
         entryPoints: [ "web", "websecure" ]
-        routes:
-        - match: Host(`traefik.home.lanegoolsby.com`)
-          kind: Rule
-          services:
-          - name: api@internal
+        # routes:
+        # - match: Host(`traefik.home.lanegoolsby.com`)
+        #   kind: Rule
+        #   services:
+        #   - name: api@internal
         tls: {}
 
     # Service configuration
@@ -67,8 +67,6 @@ traefik:
     - "--providers.kubernetesingress.ingressclass=traefik"
     - "--log.level=INFO"
     - "--serversTransport.insecureSkipVerify=true"
-    - "--providers.kubernetescrd.allowCrossNamespace=true"
-    - "--providers.kubernetescrd.namespaces=*"
     # Define hosts for the dashboard
     deployment:
       additionalContainerArgs:
