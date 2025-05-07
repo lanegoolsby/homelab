@@ -60,6 +60,10 @@ traefik:
     ssl:
       insecureSkipVerify: true
 
+    # Add serversTransport configuration for backend certificate validation
+    serversTransport:
+      insecureSkipVerify: true
+
     # Add your custom configuration here
     additionalArguments:
     - "--api.dashboard=true"
