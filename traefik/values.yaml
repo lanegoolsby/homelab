@@ -3,7 +3,7 @@ traefik:
   namespace: traefik
   repoURL: "https://traefik.github.io/charts"
   chart: traefik
-  version: "35.2.0"
+  version: "35.2.0" # Updated to match the version in traefik-app.yaml
   createNamespace: true
 
   values:
@@ -42,7 +42,6 @@ traefik:
     # Service configuration
     service:
       type: LoadBalancer
-      loadBalancerIP: "192.168.100.20"
 
     # Persistent settings
     persistence:
