@@ -7,6 +7,10 @@ traefik:
   createNamespace: true
 
   values:
+    image:
+      name: traefik
+      tag: "v3.4.0"
+
     # Basic configuration - adjust based on your needs
     ingressClass:
       enabled: true
