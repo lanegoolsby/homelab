@@ -64,7 +64,7 @@ traefik:
     - "--log.level=INFO"
     - "--serversTransport.insecureSkipVerify=true"
     - "--providers.kubernetescrd.allowCrossNamespace=true"
-    - "--providers.kubernetescrd.namespaces=hello-world,traefik"
+    - "--providers.kubernetescrd.namespaces=*"
     # Define hosts for the dashboard
     deployment:
       additionalContainerArgs:
