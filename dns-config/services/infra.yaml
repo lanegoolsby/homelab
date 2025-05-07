@@ -5,14 +5,14 @@ metadata:
   namespace: argocd
 spec:
   entryPoints:
-  - web
+  - websecure
   routes:
   - match: Host(`argocd.home.lanegoolsby.com`)
     kind: Rule
     services:
     - name: argocd-server
       namespace: argocd
-      port: 80
+      port: 443
   tls: {}
 ---
 
