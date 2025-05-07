@@ -78,3 +78,4 @@ traefik:
         namespaces:
         - traefik
         - hello-world
+        - argocd
