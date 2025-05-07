@@ -71,3 +71,10 @@ traefik:
     deployment:
       additionalContainerArgs:
       - "--providers.kubernetesIngress.ingressEndpoint.publishedService=traefik/traefik"
+
+    # Add providers block to watch specific namespaces
+    providers:
+      kubernetesCRD:
+        namespaces:
+        - traefik
+        - hello-world
