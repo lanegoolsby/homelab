@@ -37,7 +37,11 @@ traefik:
         annotations: {}
         labels: {}
         entryPoints: [ "web", "websecure" ]
-        middlewares: []
+        routes:
+        - match: Host(`traefik.home.lanegoolsby.com`)
+          kind: Rule
+          services:
+          - name: api@internal
         tls: {}
 
     # Service configuration
