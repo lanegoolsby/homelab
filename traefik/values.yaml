@@ -7,6 +7,7 @@ traefik:
   createNamespace: true
 
   values:
+
     # Basic configuration - adjust based on your needs
     ingressClass:
       enabled: true
@@ -36,12 +37,17 @@ traefik:
         annotations: {}
         labels: {}
         entryPoints: [ "web", "websecure" ]
-        middlewares: []
+        # routes:
+        # - match: Host(`traefik.home.lanegoolsby.com`)
+        #   kind: Rule
+        #   services:
+        #   - name: api@internal
         tls: {}
 
     # Service configuration
     service:
       type: LoadBalancer
+      loadBalancerIP: "192.168.100.50" # Static IP for DNS records
 
     # Persistent settings
     persistence:
@@ -65,3 +71,10 @@ traefik:
     deployment:
       additionalContainerArgs:
       - "--providers.kubernetesIngress.ingressEndpoint.publishedService=traefik/traefik"
+
+    # Add providers block to watch specific namespaces
+    providers:
+      kubernetesCRD:
+        namespaces:
+        - traefik
+        - hello-world
