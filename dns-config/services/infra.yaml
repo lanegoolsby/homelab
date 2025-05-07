@@ -10,7 +10,7 @@ spec:
   - match: Host(`argocd.home.lanegoolsby.com`)
     kind: Rule
     services:
-    - name: svc/argocd-server
+    - name: argocd-server
       namespace: argocd
       port: 443
   tls: {}
