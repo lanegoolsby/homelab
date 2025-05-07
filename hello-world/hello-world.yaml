@@ -39,19 +39,20 @@ spec:
   type: ClusterIP
 ---
 
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
-  name: hello-world
-  namespace: hello-world
-spec:
-  entryPoints:
-  - web
-  - websecure
-  routes:
-  - match: Host(`hello-world.home.lanegoolsby.com`)
-    kind: Rule
-    services:
-    - name: hello-world
-      port: 80
-  tls: {}
+
+# apiVersion: traefik.containo.us/v1alpha1
+# kind: IngressRoute
+# metadata:
+#   name: hello-world
+#   namespace: hello-world
+# spec:
+#   entryPoints:
+#   - web
+#   - websecure
+#   routes:
+#   - match: Host(`hello-world.home.lanegoolsby.com`)
+#     kind: Rule
+#     services:
+#     - name: hello-world
+#       port: 80
+#   tls: {}
