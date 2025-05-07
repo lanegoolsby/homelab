@@ -46,7 +46,7 @@ spec:
   - web
   - websecure
   routes:
-  - match: Host(`hello-world`)
+  - match: Host(`hello-world.home.lanegoolsby.com`)
     kind: Rule
     services:
     - name: hello-world
