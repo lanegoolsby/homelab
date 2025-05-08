@@ -6,3 +6,4 @@ resources:
 - media-services.yaml
 - infra.yaml
 - hello-world.yaml
+- home-assistant.yaml

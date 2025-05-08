@@ -83,3 +83,4 @@ traefik:
         - traefik
         - hello-world
         - argocd
+        - home-assistant
