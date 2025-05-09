@@ -10,12 +10,9 @@
         * sudo scp root@pve1:/etc/pve/ceph.conf /etc/ceph
         * sudo scp root@pve1:/etc/pve/priv/ceph.client.admin.keyring /etc/ceph
         * sudo nano /etc/ceph/ceph.conf # Need to update the paths...
-        * sudo microk8s connect-external-ceph --ceph-conf /etc/ceph/ceph.conf --keyring /etc/ceph/ceph.client.admin.keyring --rbd-pool k8s-pvc
-        * sudo rbd create k8s-pvc/volumes --size 10G
-        * sudo rbd map k8s-pvc/volumes
-        * echo "/dev/rbd0 /mnt/ceph-storage ext4 noauto,_netdev 0 0" | sudo tee -a /etc/fstab
-        * echo "rbd/volumes id=admin,keyring=/etc/ceph/ceph.client.admin.keyring" | sudo tee -a /etc/ceph/rbdmap
-        * sudo systemctl enable rbdmap
+        * sudo ceph osd pool create microk8s-rbd 128 128
+        * sudo ceph osd pool application enable microk8s-rbd rbd
+        * sudo microk8s connect-external-ceph --ceph-conf /etc/ceph/ceph.conf --keyring /etc/ceph/ceph.client.admin.keyring --rbd-pool microk8s-rbd
 
 
 ### k8s stuff
