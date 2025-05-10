@@ -3,8 +3,6 @@
 ### Ansible stuff
 
 * Setup k8s VMs
-    * Provision microk8s
-    * Join cluster
     * Setup ceph
         * sudo apt install ceph-common
         * sudo scp root@pve1:/etc/pve/ceph.conf /etc/ceph
@@ -12,14 +10,16 @@
         * sudo nano /etc/ceph/ceph.conf # Need to update the paths...
         * sudo ceph osd pool create microk8s-rbd 128 128
         * sudo ceph osd pool application enable microk8s-rbd rbd
-        * sudo microk8s connect-external-ceph --ceph-conf /etc/ceph/ceph.conf --keyring /etc/ceph/ceph.client.admin.keyring --rbd-pool microk8s-rbd
-
+    * Join cluster
+    * Provision microk8s
+        * sudo microk8s enable dns
+        * sudo microk8s enable rook-ceph
+        * sudo microk8s connect-external-ceph --ceph-conf /etc/ceph/ceph.conf --keyring /etc/ceph/ceph.client.admin.keyring --rbd-pool k8s-pvc
+            * kubectl --namespace rook-ceph-external get cephcluster
 
 ### k8s stuff
 
-* Apply rook-ceph CRDs
 * Apply ArgoCD CRDs
-* Deploy rook-ceph operator
 * Setup microk8s cluster to use ceph for persistent volume claims
 * Deploy ArgoCD
 * Verify apps can provision PVCs
