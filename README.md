@@ -17,9 +17,15 @@
 
 ### k8s stuff
 
-* Create the SSH secret?
+* Apply rook-ceph CRDs
+* Apply ArgoCD CRDs
+* Deploy rook-ceph operator
+* Setup microk8s cluster to use ceph for persistent volume claims
+* Deploy ArgoCD
+
+<!-- * Create the SSH secret?
 * kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-* kubectl apply -f apps/argocd.yaml
+* kubectl apply -f apps/argocd.yaml -->
 
 
 ## Debugging stuff
