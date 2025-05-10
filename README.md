@@ -22,6 +22,7 @@
 * Deploy rook-ceph operator
 * Setup microk8s cluster to use ceph for persistent volume claims
 * Deploy ArgoCD
+* Verify apps can provision PVCs
 
 <!-- * Create the SSH secret?
 * kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
