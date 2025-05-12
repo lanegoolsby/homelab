@@ -55,6 +55,7 @@ traefik:
       accessMode: ReadWriteOnce
       size: 128Mi
       path: /data
+      storageClassName: ceph-rbd
 
     # TLS configuration to fix certificate validation error
     ssl:
