@@ -19,7 +19,7 @@ spec:
       tolerations:
       - key: "node.kubernetes.io/disk-pressure"
         operator: "Exists"
-        effect: "NoSchedule"
+        effect: "NoExecute"
         tolerationSeconds: 300
       containers:
       - name: home-assistant
