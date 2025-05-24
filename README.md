@@ -3,31 +3,30 @@
 ### Ansible stuff
 
 * Setup k8s VMs
-    * Setup ceph
-        * sudo apt install ceph-common
-        * sudo scp root@pve1:/etc/pve/ceph.conf /etc/ceph
-        * sudo scp root@pve1:/etc/pve/priv/ceph.client.admin.keyring /etc/ceph
-        * sudo nano /etc/ceph/ceph.conf # Need to update the paths...
-        * sudo ceph osd pool create microk8s-rbd 128 128
-        * sudo ceph osd pool application enable microk8s-rbd rbd
-    * Join cluster
-    * Provision microk8s
-        * sudo microk8s enable dns
-        * sudo microk8s enable rook-ceph
-        * sudo microk8s connect-external-ceph --ceph-conf /etc/ceph/ceph.conf --keyring /etc/ceph/ceph.client.admin.keyring --rbd-pool k8s-pvc
-            * kubectl --namespace rook-ceph-external get cephcluster
+    * sudo snap install microceph
+      * On all nodes
+    * sudo microceph cluster bootstrap
+      * Follow on screen instructions
+    * sudo microceph add [node]
+      * Rinse and repeat
+    * sudo ceph status
+    * sudo microceph disk add /dev/sdb --wipe
+      * On all nodes
+    * sudo microk8s enable metallb
 
 ### k8s stuff
 
-* Apply ArgoCD CRDs
-* Setup microk8s cluster to use ceph for persistent volume claims
-* Deploy ArgoCD
-* Verify apps can provision PVCs
-
-<!-- * Create the SSH secret?
-* kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-* kubectl apply -f apps/argocd.yaml -->
-
+ Deploy ArgoCD
+  ```bash
+  # Install ArgoCD
+  kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+  
+  # Apply your ArgoCD config
+  kubectl apply -f apps/argocd.yml
+  
+  # Get the initial admin password
+  kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
+  ```
 
 ## Debugging stuff
 
