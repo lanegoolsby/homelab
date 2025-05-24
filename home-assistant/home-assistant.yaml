@@ -8,11 +8,19 @@ spec:
   selector:
     matchLabels:
       app: home-assistant
+  strategy:
+    type: Recreate # Ensure we don't try to run multiple instances during updates
   template:
     metadata:
       labels:
         app: home-assistant
     spec:
+      # Add tolerations to handle temporary disk pressure
+      tolerations:
+      - key: "node.kubernetes.io/disk-pressure"
+        operator: "Exists"
+        effect: "NoSchedule"
+        tolerationSeconds: 300
       containers:
       - name: home-assistant
         image: ghcr.io/home-assistant/home-assistant:stable
@@ -22,12 +30,12 @@ spec:
         resources:
           limits:
             memory: "1Gi"
-            cpu: "1000m"
+            cpu: "800m" # Reduced CPU limit to make scheduling easier
             ephemeral-storage: "2Gi"
           requests:
             memory: "512Mi"
-            cpu: "500m"
-            ephemeral-storage: "1Gi"
+            cpu: "400m" # Reduced CPU request to make scheduling easier
+            ephemeral-storage: "512Mi" # Reduced ephemeral storage request
         volumeMounts:
         - name: config
           mountPath: /config
