@@ -35,4 +35,5 @@ kubectl port-forward svc/argocd-server -n argocd 8080:443
 kubectl rollout restart deployment argocd-server argocd-repo-server argocd-applicationset-controller argocd-redis argocd-dex-server -n argocd
 
 kubectl port-forward svc/argocd-server -n argocd 8080:443
-kubectl port-forward svc/traefik -n traefik 443:443
+kubectl port-forward svc/traefik -n traefik 8080:443
+kubectl port-forward svc/home-assistant -n home-assistant 8080:8123
