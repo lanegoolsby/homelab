@@ -2,6 +2,8 @@
 
 ### Ansible stuff
 
+<!-- https://www.youtube.com/watch?v=BatCdEsJgEo -->
+
 * Setup k8s VMs
     * sudo snap install microceph
       * On all nodes
