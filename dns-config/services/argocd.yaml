@@ -12,6 +12,5 @@ spec:
     services:
     - name: argocd-server
       namespace: argocd
-      port: 443
-  tls:
-    insecureSkipVerify: true
+      port: 80
+  tls: {}
