@@ -55,9 +55,14 @@ traefik:
       accessMode: ReadWriteOnce
       size: 128Mi
       path: /data
+      storageClassName: ceph-rbd
 
     # TLS configuration to fix certificate validation error
     ssl:
+      insecureSkipVerify: true
+
+    # Add serversTransport configuration for backend certificate validation
+    serversTransport:
       insecureSkipVerify: true
 
     # Add your custom configuration here
@@ -78,3 +83,5 @@ traefik:
         namespaces:
         - traefik
         - hello-world
+        - argocd
+        - home-assistant

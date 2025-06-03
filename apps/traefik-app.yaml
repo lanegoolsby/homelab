@@ -26,4 +26,21 @@ spec:
     - CreateNamespace=true
 ---
 
-
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: traefik-rbac
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/lanegoolsby/homelab.git
+    targetRevision: init
+    path: rbac/traefik
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: traefik
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

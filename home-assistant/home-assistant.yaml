@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: home-assistant
+  namespace: home-assistant
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: home-assistant
+  strategy:
+    type: Recreate # Ensure we don't try to run multiple instances during updates
+  template:
+    metadata:
+      labels:
+        app: home-assistant
+    spec:
+      # Add tolerations to handle temporary disk pressure
+      tolerations:
+      - key: "node.kubernetes.io/disk-pressure"
+        operator: "Exists"
+        effect: "NoExecute"
+        tolerationSeconds: 300
+      containers:
+      - name: home-assistant
+        image: ghcr.io/home-assistant/home-assistant:stable
+        ports:
+        - containerPort: 8123
+          name: http
+        resources:
+          limits:
+            memory: "1Gi"
+            cpu: "800m" # Reduced CPU limit to make scheduling easier
+            ephemeral-storage: "2Gi"
+          requests:
+            memory: "512Mi"
+            cpu: "400m" # Reduced CPU request to make scheduling easier
+            ephemeral-storage: "512Mi" # Reduced ephemeral storage request
+        volumeMounts:
+        - name: config
+          mountPath: /config
+      volumes:
+      - name: config
+        persistentVolumeClaim:
+          claimName: home-assistant-config-pvc
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: home-assistant
+  namespace: home-assistant
+spec:
+  selector:
+    app: home-assistant
+  ports:
+  - name: http
+    port: 8123
+    targetPort: 8123
+  type: ClusterIP
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: home-assistant-config-pvc
+  namespace: home-assistant
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: ceph-rbd
+  resources:
+    requests:
+      storage: 2Gi
