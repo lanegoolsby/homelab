@@ -15,4 +15,4 @@ spec:
       port: 443
       serversTransport: argocd-transport
   tls:
-    certResolver: cloudflare
+    secretName: wildcard-home-lanegoolsby-com-tls

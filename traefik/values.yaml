@@ -43,11 +43,7 @@ traefik:
         #   services:
         #   - name: api@internal
         tls:
-          certResolver: cloudflare
-          domains:
-          - main: "*.home.lanegoolsby.com"
-            sans:
-            - "home.lanegoolsby.com"
+          secretName: wildcard-home-lanegoolsby-com-tls
 
     # Service configuration
     service:
@@ -77,23 +73,9 @@ traefik:
     - "--providers.kubernetesingress.ingressclass=traefik"
     - "--log.level=INFO"
     - "--serversTransport.insecureSkipVerify=true"
-    - "--certificatesresolvers.cloudflare.acme.dnschallenge=true"
-    - "--certificatesresolvers.cloudflare.acme.dnschallenge.provider=cloudflare"
-    - "--certificatesresolvers.cloudflare.acme.email=lanegoolsby@yahoo.com"
-    - "--certificatesresolvers.cloudflare.acme.storage=/data/acme.json"
-    - "--certificatesresolvers.cloudflare.acme.dnschallenge.resolvers=1.1.1.1:53,8.8.8.8:53"
-    - "--certificatesresolvers.cloudflare.acme.caserver=https://acme-v02.api.letsencrypt.org/directory"
     # Define hosts for the dashboard
     deployment:
       additionalContainers: []
-
-    # Environment variables for Cloudflare DNS challenge
-    env:
-    - name: CF_API_TOKEN
-      valueFrom:
-        secretKeyRef:
-          name: cloudflare-api-token-secret
-          key: api-token
     # Add providers block to watch specific namespaces
     providers:
       kubernetesCRD:
