@@ -9,3 +9,4 @@ resources:
 - hello-world.yaml
 - home-assistant.yaml
 - media-services.yaml
+- tls-store.yaml

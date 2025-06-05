@@ -14,4 +14,5 @@ spec:
       namespace: argocd
       port: 443
       serversTransport: argocd-transport
-  tls: {}
+  tls:
+    secretName: wildcard-home-lanegoolsby-com-tls

@@ -13,4 +13,5 @@ spec:
     - name: home-assistant
       namespace: home-assistant
       port: 8123
-  tls: {}
+  tls:
+    secretName: wildcard-home-lanegoolsby-com-tls

@@ -7,8 +7,24 @@ spec:
     email: lanegoolsby@yahoo.com
     server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
-      name: cloudflare-api-token-secret
+      name: cloudflare-private-key
     solvers:
-    - http01:
-        ingress:
-          class: public
+    - dns01:
+        cloudflare:
+          apiTokenSecretRef:
+            name: cloudflare-api-token-secret
+            key: api-token
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: wildcard-home-lanegoolsby-com
+  namespace: traefik
+spec:
+  secretName: wildcard-home-lanegoolsby-com-tls
+  issuerRef:
+    name: cloudflare
+    kind: ClusterIssuer
+  dnsNames:
+  - "*.home.lanegoolsby.com"
+  - "home.lanegoolsby.com"
