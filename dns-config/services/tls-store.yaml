@@ -7,7 +7,6 @@ spec:
   defaultCertificate:
     secretName: wildcard-home-lanegoolsby-com-tls
 ---
-# Create a secret copier to distribute the wildcard cert to other namespaces
 apiVersion: v1
 kind: ServiceAccount
 metadata:
