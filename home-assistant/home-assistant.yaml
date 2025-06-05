@@ -27,6 +27,15 @@ spec:
         ports:
         - containerPort: 8123
           name: http
+        env:
+        - name: HASS_HTTP_TRUSTED_PROXY_1
+          value: "10.0.0.0/8"
+        - name: HASS_HTTP_TRUSTED_PROXY_2
+          value: "172.16.0.0/12"
+        - name: HASS_HTTP_TRUSTED_PROXY_3
+          value: "192.168.0.0/16"
+        - name: HASS_HTTP_USE_X_FORWARDED_FOR
+          value: "true"
         resources:
           limits:
             memory: "1Gi"
