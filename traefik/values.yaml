@@ -83,7 +83,6 @@ traefik:
     - "--certificatesresolvers.cloudflare.acme.storage=/data/acme.json"
     - "--certificatesresolvers.cloudflare.acme.dnschallenge.resolvers=1.1.1.1:53,8.8.8.8:53"
     - "--certificatesresolvers.cloudflare.acme.caserver=https://acme-v02.api.letsencrypt.org/directory"
-
     # Define hosts for the dashboard
     deployment:
       additionalContainers: []
@@ -104,6 +103,3 @@ traefik:
       kubernetesIngress:
         enabled: true
         allowExternalNameServices: true
-        - hello-world
-        - argocd
-        - home-assistant
