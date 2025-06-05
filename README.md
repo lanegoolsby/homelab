@@ -15,10 +15,35 @@
     * sudo microceph disk add /dev/sdb --wipe
       * On all nodes
     * sudo microk8s enable metallb
+    * sudo microk8s enable cert-manager
 
-### k8s stuff
+## k8s stuff
 
- Deploy ArgoCD
+### Cluster prep
+
+Save this to `./secrets/cloudflare.yaml` and apply using `kubectl apply -f`:
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cloudflare-api-token-secret
+  namespace: cert-manager
+type: Opaque
+stringData:
+  api-token: < CloudFlare SSL API token >
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cloudflare-api-token-secret
+  namespace: traefik
+type: Opaque
+stringData:
+  api-token: < CloudFlare SSL API token >
+```
+
+### Deploy ArgoCD
   ```bash
   # Install ArgoCD
   kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml

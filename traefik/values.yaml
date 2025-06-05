@@ -42,7 +42,8 @@ traefik:
         #   kind: Rule
         #   services:
         #   - name: api@internal
-        tls: {}
+        tls:
+          secretName: wildcard-home-lanegoolsby-com-tls
 
     # Service configuration
     service:
@@ -74,14 +75,13 @@ traefik:
     - "--serversTransport.insecureSkipVerify=true"
     # Define hosts for the dashboard
     deployment:
-      additionalContainerArgs:
-      - "--providers.kubernetesIngress.ingressEndpoint.publishedService=traefik/traefik"
-
+      additionalContainers: []
     # Add providers block to watch specific namespaces
     providers:
       kubernetesCRD:
-        namespaces:
-        - traefik
-        - hello-world
-        - argocd
-        - home-assistant
+        enabled: true
+        allowCrossNamespace: true
+        allowExternalNameServices: true
+      kubernetesIngress:
+        enabled: true
+        allowExternalNameServices: true

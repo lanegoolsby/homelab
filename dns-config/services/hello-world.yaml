@@ -13,4 +13,5 @@ spec:
     - name: hello-world
       namespace: hello-world
       port: 80
-  tls: {}
+  tls:
+    secretName: wildcard-home-lanegoolsby-com-tls
