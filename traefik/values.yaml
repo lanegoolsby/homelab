@@ -82,10 +82,11 @@ traefik:
     - "--certificatesresolvers.cloudflare.acme.email=lanegoolsby@yahoo.com"
     - "--certificatesresolvers.cloudflare.acme.storage=/data/acme.json"
     - "--certificatesresolvers.cloudflare.acme.dnschallenge.resolvers=1.1.1.1:53,8.8.8.8:53"
+    - "--certificatesresolvers.cloudflare.acme.caserver=https://acme-v02.api.letsencrypt.org/directory"
+
     # Define hosts for the dashboard
     deployment:
-      additionalContainerArgs:
-      - "--providers.kubernetesIngress.ingressEndpoint.publishedService=traefik/traefik"
+      additionalContainers: []
 
     # Environment variables for Cloudflare DNS challenge
     env:
@@ -97,8 +98,12 @@ traefik:
     # Add providers block to watch specific namespaces
     providers:
       kubernetesCRD:
-        namespaces:
-        - traefik
+        enabled: true
+        allowCrossNamespace: true
+        allowExternalNameServices: true
+      kubernetesIngress:
+        enabled: true
+        allowExternalNameServices: true
         - hello-world
         - argocd
         - home-assistant
