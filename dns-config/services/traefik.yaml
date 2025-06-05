@@ -14,4 +14,8 @@ spec:
     - name: api@internal
       kind: TraefikService
   tls:
-    secretName: wildcard-home-lanegoolsby-com-tls
+    certResolver: cloudflare
+    domains:
+    - main: "*.home.lanegoolsby.com"
+      sans:
+      - "home.lanegoolsby.com"
