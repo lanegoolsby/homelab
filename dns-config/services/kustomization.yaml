@@ -4,6 +4,7 @@ kind: Kustomization
 resources:
 - argocd.yaml
 - argocd-servertransport.yaml
+- cert-manager.yaml
 - traefik.yaml
 - hello-world.yaml
 - home-assistant.yaml
